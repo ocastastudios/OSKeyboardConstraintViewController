@@ -43,8 +43,6 @@
 {
     [super viewDidAppear:animated];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    
     if (_closeKeyboardOnTapBehind)
     {
     
@@ -70,6 +68,9 @@
     
     if(initialConstantValue==-1)
         initialConstantValue = _constraintToAdjust.constant;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+
 }
 
 
@@ -109,7 +110,9 @@
     
     [self.view removeGestureRecognizer:tap];
     
-    
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 

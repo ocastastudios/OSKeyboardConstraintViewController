@@ -31,6 +31,10 @@
  */
 @property (nonatomic,assign) CGFloat additionalYOffset;
 
+/**
+ * Prevent constraint from being adjusted
+ */
+@property (nonatomic,assign) BOOL suppressUpdates;
 
 /**
  * Override to be notified that the kb has finished hiding
